@@ -9,7 +9,6 @@
     <img src="https://img.shields.io/badge/Telegram-blue?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram"/>
   </a>
 </div>
-
 ### About me
 - 🌱 I’m currently learning **SQL, Python**
 - 📫 Reach me by [LinkedIn](linkedin-link), [email](mailto:email-address)
