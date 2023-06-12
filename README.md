@@ -11,8 +11,7 @@
 </div>
 
 ### About me
-- 🌱 I’m currently learning **SQL, Python**
-- 📫 Reach me by [LinkedIn](linkedin-link), [email](mailto:email-address)
+- 🌱 I’m currently learning SQL, Python
 - 🌍 I speak English
 
 ---
