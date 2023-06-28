@@ -22,7 +22,7 @@ JOIN Subscriptions ON Subscriptions.course_id = Courses.id
 JOIN Students ON Students.id = Subscriptions.student_id;
 
 ALTER TABLE Courses ADD COLUMN price_per_hour FLOAT;
-UPDATE Course SET price_per_hour = price/duration;
+UPDATE Courses SET price_per_hour = price/duration;
 
 ---Basic_functions---
 
