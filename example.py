@@ -79,56 +79,52 @@ for row in range(N):
 
 #Функции
 
-def bedroom():
-  print('Вы в спальне. Куда идем?')
-  print('1 - в ванну')
-  print('2 - в коридор')
-  bedroom = int(input())
-  if bedroom == 1:
-    bath()
-  elif bedroom == 2:
-    corridor()
+print('Задача 9. Аннуитетный платёж')
 
-def corridor():
-  print('Вы в коридоре. Куда идем?')
-  print('1 - в спальню')
-  print('2 - в ванну')
-  print('3 - на кухню')
-  print('4 - в дверь')
-  corridor = int(input())
-  if corridor == 1:
-    bedroom()
-  elif corridor == 2:
-    bath()
-  elif corridor == 3:
-    kitchen()
-  elif corridor == 4:
-    door()
+def payment(summ, time, percent):
+  k = (percent * (1 + percent) ** time) / ((1 + percent) ** time - 1)
+  perayment = round(k * summ, 2)
+  return perayment
 
-def bath():
-  print('Вы в ванной. Куда идем?')
-  print('1 - в спальню')
-  print('2 - в коридор')
-  bath = int(input())
-  if bath == 1:
-    bedroom()
-  elif bath == 2:
-    corridor()
+def printout(summ, percent, perayment, time):
+  for i in range(1, period + 1):
+    paid_percent = summ * percent
+    paid_credit = perayment - paid_percent
+    print('\nПериод:', i)
+    print('Остаток долга на начало периода:', summ)
+    print('Выплачено процентов:', paid_percent)
+    print('Выплачено тела кредита:', paid_credit)
+    summ -= paid_credit
+  else:
+    print('\nОстаток долга', summ)
+    return summ
 
-def kitchen():
-  print('Вы на кухне. Куда идем?')
-  print('1 - в окно')
-  print('2 - в коридор')
-  kitchen = int(input())
-  if kitchen == 1:
-    window()
-  elif kitchen == 2:
-    corridor()
+credit = float(input('Введите сумму кредита: '))
+time = int(input('На сколько лет выдан? '))
+percent = int(input('Сколько процентов годовых? ')) / 100
+period = 3 
+A = payment(credit, time, percent)
+balance = printout(credit, percent, A, time)
+period = time - period
 
-def window():
-  print('Игрок вышел из окна и разбился. Игра окончена.')
+print('\n', '=' * 30)
+time = int(input('\nНа сколько лет продляется договор? '))
+period += time
+percent = int(input('Увеличение ставки до: ')) / 100
+A = payment(balance, period, percent)
+balanse = printout(balance, percent, A, time)
 
-def door():
-  print('Игрок вышел наружу. Добро пожаловать в открытый мир!')
-
-corridor()
+# Кредит в сумме S млн руб.,
+# выданный на n лет под i% годовых,
+# подлежит погашению равными ежегодными выплатами в конце каждого года,
+# включающими процентные платежи и сумму в погашение основного долга.
+# Проценты начисляются в один раз в год.
+# После выплаты третьего платежа
+# достигнута договорённость между кредитором и заёмщиком
+# о продлении срока погашения займа на n_2 лет
+# и увеличении процентной ставки с момента конверсии до i_2%.
+#
+# Напишите программу,
+# которая выводит план погашения оставшейся части долга.
+# A = KS
+# K = i(1 + i) ** n / (1 + i) ** n - 1
