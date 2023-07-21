@@ -79,52 +79,53 @@ for row in range(N):
 
 #Функции
 
-print('Задача 9. Аннуитетный платёж')
+def rock_paper_scissors(choice):
+  sign = input('Введите - камень, ножницы или бумага: ')
+  if sign == "ножницы":
+    print('Вы выйграли! У меня - "бумага".')
+  elif sign == 'бумага':
+    print('Ничья! У меня тоже "бумага"')
+  elif sign == 'камень':
+    print('Я победил! У меня "бумага"')
+  input('Введите любую цифру для возврата в меню: ')
+  mainMenu()
+  
+def guess_the_number(choice):
+  while True:
+    number = int(input('Введите число: '))
+    if number == 7:
+      print('Вы угадали!')
+      break
+    else:
+      print('Вы не угадали.')
+  input('Введите любой символ для возврата в меню: ')
+  mainMenu()
 
-def payment(summ, time, percent):
-  k = (percent * (1 + percent) ** time) / ((1 + percent) ** time - 1)
-  perayment = round(k * summ, 2)
-  return perayment
+def mainMenu():
+  choice = int(input('Выберите игру! 1 - «Камень, ножницы, бумага», 2 - «Угадай число»: '))
+  if choice == 1:
+    rock_paper_scissors(choice)
+  if choice == 2:
+    guess_the_number(choice)
 
-def printout(summ, percent, perayment, time):
-  for i in range(1, period + 1):
-    paid_percent = summ * percent
-    paid_credit = perayment - paid_percent
-    print('\nПериод:', i)
-    print('Остаток долга на начало периода:', summ)
-    print('Выплачено процентов:', paid_percent)
-    print('Выплачено тела кредита:', paid_credit)
-    summ -= paid_credit
-  else:
-    print('\nОстаток долга', summ)
-    return summ
+mainMenu()
 
-credit = float(input('Введите сумму кредита: '))
-time = int(input('На сколько лет выдан? '))
-percent = int(input('Сколько процентов годовых? ')) / 100
-period = 3 
-A = payment(credit, time, percent)
-balance = printout(credit, percent, A, time)
-period = time - period
 
-print('\n', '=' * 30)
-time = int(input('\nНа сколько лет продляется договор? '))
-period += time
-percent = int(input('Увеличение ставки до: ')) / 100
-A = payment(balance, period, percent)
-balanse = printout(balance, percent, A, time)
+# Списки
+N = int(input('Кол-во чисел в списке: '))
+numbers_list = []
+summ = 0
+for i in range(N):
+  print('Введите', i + 1, 'число: ', end = '')
+  number = int(input(''))
+  numbers_list.append(number)
+K = int(input('\nВведите делитель: '))
+print()
+for id in range(N):
+  if numbers_list[id] % K == 0:
+    print('Индекс числа', numbers_list[id], end = '')
+    print(':', id)
+    summ += id
+print('Сумма индексов:', summ)
 
-# Кредит в сумме S млн руб.,
-# выданный на n лет под i% годовых,
-# подлежит погашению равными ежегодными выплатами в конце каждого года,
-# включающими процентные платежи и сумму в погашение основного долга.
-# Проценты начисляются в один раз в год.
-# После выплаты третьего платежа
-# достигнута договорённость между кредитором и заёмщиком
-# о продлении срока погашения займа на n_2 лет
-# и увеличении процентной ставки с момента конверсии до i_2%.
-#
-# Напишите программу,
-# которая выводит план погашения оставшейся части долга.
-# A = KS
-# K = i(1 + i) ** n / (1 + i) ** n - 1
+# Пользователь вводит список из N чисел и число K. Напишите код, выводящий на экран сумму индексов элементов списка, которые кратны K.
