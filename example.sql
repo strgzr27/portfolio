@@ -42,6 +42,8 @@ SELECT CONCAT("Please buy our new course '", name, "' It's only ", duration, " h
 
 SELECT SUM(duration), MAX(students_count), MIN(price) FROM Courses;
 
+SELECT name, (SELECT count(*) FROM Teachers WHERE Teachers.age > Students.age) AS older_count FROM Students ORDER BY older_count LIMIT 10;
+
 SELECT Teachers.name AS teacher_name, AVG(Students.age) AS student_age
 FROM Subscriptions 
 JOIN Students ON Subscriptions.student_id = Students.id
