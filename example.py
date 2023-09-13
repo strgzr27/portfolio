@@ -100,7 +100,8 @@ mainMenu()
 
 
 # Списки
-N = int(input('Кол-во чисел в списке: '))
+N = int(input('Кол-во чисел в списке: ')) # Пользователь вводит список из N чисел и число K.
+# Напишите код, выводящий на экран сумму индексов элементов списка, которые кратны K.
 numbers_list = []
 summ = 0
 for i in range(N):
@@ -116,4 +117,22 @@ for id in range(N):
     summ += id
 print('Сумма индексов:', summ)
 
-# Пользователь вводит список из N чисел и число K. Напишите код, выводящий на экран сумму индексов элементов списка, которые кратны K.
+
+# List comprehensions
+# 1
+vowels = 'аеёиоуыэюя'
+text = input('Введите текст: ')
+new_list = [symbol for symbol in text if symbol in vowels]
+print('\nСписок гласных букв:', new_list)
+print('Длина списка:', len(new_list))
+
+# 2
+import random
+team_1 = [round(random.uniform(5, 10), 2) for _ in range(20)]
+team_2 = [round(random.uniform(5, 10), 2) for _ in range(20)]
+winners_list = [(team_1[i_player] if team_1[i_player] > team_2[i_player]
+                else team_2[i_player])
+                for i_player in range(20)]
+print('Первая команда:', team_1)
+print('Вторая команда:', team_2)
+print('Победители тура:', winners_list)
