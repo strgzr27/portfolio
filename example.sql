@@ -52,3 +52,16 @@ JOIN Teachers ON Courses.teacher_id = Teachers.id
 WHERE Students.age < 35
 GROUP BY Teachers.name
 ORDER BY Teachers.name;
+
+
+-- Метрики
+
+-- ARPPU Average revenue per paying user
+SELECT SUM(value) / count(distinct user_id) as arppu
+FROM "transaction" t
+WHERE type_id = 2
+
+--AvP Average price (средний чек)
+SELECT SUM(value) / count(*) as avp
+FROM "transaction" t
+WHERE type_id = 2
